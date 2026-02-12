@@ -816,11 +816,21 @@ body {
   max-width: 280px;
   backdrop-filter: blur(10px);
   transition: transform var(--transition-fast), background var(--transition-fast);
+  font-family: var(--font-body);
+}
+
+.runner-up-card--tappable {
+  cursor: pointer;
 }
 
 .runner-up-card:hover {
   background: rgba(255, 248, 240, 0.12);
   transform: translateY(-2px);
+}
+
+.runner-up-card--tappable:hover {
+  border-color: var(--color-warm-orange);
+  box-shadow: 0 4px 20px rgba(232, 115, 42, 0.2);
 }
 
 .runner-up-card__name {
@@ -842,6 +852,180 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--color-bamboo-tan);
+}
+
+.runner-up-card__tap-hint {
+  font-size: 0.7rem;
+  color: var(--color-sand);
+  opacity: 0.4;
+  margin-top: var(--spacing-sm);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ===================================
+   DRINK MODAL
+   =================================== */
+
+.drink-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.drink-modal {
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(232, 115, 42, 0.15);
+  animation: modalSlideUp 0.3s ease-out;
+}
+
+.drink-modal__close {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-round);
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.drink-modal__close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.drink-modal__illustration {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--color-deep-teal), var(--color-ocean-teal), var(--color-palm-green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.drink-modal__illustration .drink-card__svg {
+  width: 140px;
+  height: 170px;
+}
+
+.drink-modal__illustration .drink-card__illustration-name {
+  display: none;
+}
+
+.drink-modal__body {
+  padding: var(--spacing-lg);
+}
+
+.drink-modal__era {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ocean-teal);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.drink-modal__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-deep-brown);
+  margin-bottom: var(--spacing-xs);
+}
+
+.drink-modal__tagline {
+  font-style: italic;
+  color: var(--color-warm-orange);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.drink-modal__description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-deep-brown);
+  margin-bottom: var(--spacing-md);
+}
+
+.drink-modal__match {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-warm-orange), var(--color-sunset-coral));
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.drink-modal__recipe {
+  border-top: 2px solid var(--color-sand);
+  padding-top: var(--spacing-md);
+}
+
+.drink-modal__recipe-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--color-ocean-teal);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 1px;
+}
+
+.drink-modal__recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  list-style: none;
+}
+
+.drink-modal__recipe-item {
+  background: var(--color-sand);
+  color: var(--color-deep-brown);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* ===================================

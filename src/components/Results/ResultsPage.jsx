@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { axisLabels } from '../../data/axisLabels';
 import DrinkCard from './DrinkCard';
 import AxisSlider from './AxisSlider';
+import DrinkModal from './DrinkModal';
 
 export default function ResultsPage({ results, onRetake }) {
   const { topDrink, runnerUps, userScores } = results;
+  const [modalDrink, setModalDrink] = useState(null);
 
   const shareText = `I'm a ${topDrink.name}! \u{1F379} Take "Find Your Spiritual Tiki Drink" to discover yours!`;
   const shareUrl = window.location.href;
@@ -51,11 +54,16 @@ export default function ResultsPage({ results, onRetake }) {
           <h3 className="runner-ups__title">{'\u{2728}'} Your Spirit Also Channels... {'\u{2728}'}</h3>
           <div className="runner-ups__list">
             {runnerUps.map((drink) => (
-              <div key={drink.id} className="runner-up-card">
+              <button
+                key={drink.id}
+                className="runner-up-card runner-up-card--tappable"
+                onClick={() => setModalDrink(drink)}
+              >
                 <div className="runner-up-card__name">{drink.name}</div>
                 <div className="runner-up-card__tagline">{drink.tagline}</div>
                 <div className="runner-up-card__match">{drink.matchPct}% Match</div>
-              </div>
+                <div className="runner-up-card__tap-hint">Tap to explore</div>
+              </button>
             ))}
           </div>
         </div>
@@ -79,6 +87,12 @@ export default function ResultsPage({ results, onRetake }) {
         </div>
       </div>
 
+      <div className="retake-section">
+        <button className="tiki-button tiki-button--secondary" onClick={onRetake}>
+          {'\u{1F504}'} Retake the Quiz
+        </button>
+      </div>
+
       <div className="buy-coffee-section">
         <a
           className="buy-coffee-link"
@@ -90,15 +104,13 @@ export default function ResultsPage({ results, onRetake }) {
         </a>
       </div>
 
-      <div className="retake-section">
-        <button className="tiki-button tiki-button--secondary" onClick={onRetake}>
-          {'\u{1F504}'} Retake the Quiz
-        </button>
-      </div>
-
       <div className="results-footer">
         <p>{'\u{1F334}'} Made with aloha by <a href="https://benswork.space" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>benswork.space</a> {'\u{1F334}'}</p>
       </div>
+
+      {modalDrink && (
+        <DrinkModal drink={modalDrink} onClose={() => setModalDrink(null)} />
+      )}
     </div>
   );
 }

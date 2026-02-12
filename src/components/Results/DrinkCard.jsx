@@ -266,7 +266,7 @@ const DRINK_CONFIG = {
   'ancient-mariner': { glass: 'tikiMug', colors: ['#B8860B', '#DAA520', '#6B4226'] },
 };
 
-function CocktailIllustration({ drink }) {
+export function CocktailIllustration({ drink }) {
   const config = DRINK_CONFIG[drink.id] || { glass: 'tikiMug', colors: ['#E8932A', '#C46B0A', '#8B4513'] };
   const { colors, glass } = config;
 
