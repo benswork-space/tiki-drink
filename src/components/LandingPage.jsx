@@ -38,8 +38,8 @@ export default function LandingPage({ onStart }) {
       </button>
 
       <p className="landing-footer">
-        A celebration of tiki culture, from Don the Beachcomber and Trader Vic
-        to the modern tiki revival at Smuggler{'\u2019'}s Cove and beyond. Mahalo!
+        Celebrating tiki culture, from Don the Beachcomber and Trader Vic
+        to the modern tiki revival!
       </p>
 
       <div className="landing-bottom-decor">
